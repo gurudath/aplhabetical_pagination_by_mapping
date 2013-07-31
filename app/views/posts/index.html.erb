@@ -1,0 +1,42 @@
+<h1>Listing posts</h1>
+<div id='alpha'>
+<%= alphabetically_paginate(@posts) %>
+</div>
+<table>
+<div id='list'>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.title %></td>
+    <td><%= post.body %></td>
+    <td><%= link_to 'Show', post %></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<br />
+<div id="paginate_list">
+<%= will_paginate @posts %>
+<br />
+<%= link_to 'New Post', new_post_path %>
+</div>
+<style type="text/css">
+li{
+    list-style-type: none;
+}
+
+table {
+    float: left;
+    clear: both;
+}
+#paginate_list { float: left;
+    clear: both;}
+</style>
